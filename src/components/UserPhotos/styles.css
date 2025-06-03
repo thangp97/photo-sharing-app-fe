@@ -1,0 +1,31 @@
+.user-photo-container {
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.photo-item {
+  margin-bottom: 32px;
+}
+
+.photo-thumbnail {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+}
+
+.photo-date {
+  color: #757575;
+  margin-bottom: 8px;
+}
+
+.comment-box {
+  padding-left: 16px;
+  margin-bottom: 12px;
+  border-left: 3px solid #ccc;
+}
+
+.comment-text {
+  font-style: italic;
+}
