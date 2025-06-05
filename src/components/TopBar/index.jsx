@@ -44,6 +44,7 @@ function TopBar () {
             Phạm Mạnh Thắng
           </Typography>
           <Typography variant="h6" color="inherit">{rightContent}</Typography>
+          <Typography > </Typography>
         </Toolbar>
       </AppBar>
     );
