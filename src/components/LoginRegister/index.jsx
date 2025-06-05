@@ -1,4 +1,4 @@
-import { AppBar, Toolbar, Typography, Box, Input } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, Input, Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import fetchModel from '../../lib/fetchModelData.js'
 
@@ -7,12 +7,12 @@ function LoginRegister () {
     const [creds, setCreds] = useState({});
     const [error, setError] = useState();
 
-    const handleLogin = async () => {
-        try {
-           const fetch = await fetchModel("/api/user/admin/login");
-           if(fetch) 
-        }
-    };
+    // const handleLogin = async () => {
+    //     try {
+    //        const fetch = await fetchModel("/api/user/admin/login");
+    //        if(fetch) 
+    //     }
+    // };
 
     return (
         <Box>
