@@ -111,7 +111,7 @@ function UserPhotos () {
             <Paper key={photo._id} elevation={3} sx={{ p: 2, mb: 4 }}>
               <Box textAlign="center">
                 <img
-                  src={require(`../../images/${photo.file_name}`)}
+                  src={`http://localhost:8081/images/${photo.file_name}`}
                   alt="Photo"
                   style={{ width: "100%", maxWidth: 600, borderRadius: 5 }}
                 />

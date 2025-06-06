@@ -4,6 +4,7 @@ import models from '../../modelData/models.js'
 
 import "./styles.css";
 import { useLocation, useParams, matchPath, Link, useNavigate } from "react-router-dom";
+import UpdatePhoto from "../UpdatePhoto/index"
 
 /**
  * Define TopBar, a React component of Project 4.
@@ -54,6 +55,7 @@ function TopBar () {
           <Typography variant="h6" color="inherit">{rightContent}</Typography>
           {value && (
             <>
+              <UpdatePhoto/>
               <Typography>Hi {value.last_name}</Typography>
               <Typography className="button" component={Link} onClick={logOut}>Log out</Typography>
             </>
