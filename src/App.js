@@ -1,15 +1,21 @@
 import './App.css';
 
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Typography, Paper } from "@mui/material";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, useNavigate } from "react-router-dom";
 
 import TopBar from "./components/TopBar";
 import UserDetail from "./components/UserDetail";
 import UserList from "./components/UserList";
 import UserPhotos from "./components/UserPhotos";
+import LoginRegister from "./components/LoginRegister";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = (props) => {
+  const [user,setUser] = useState();
+  const value = localStorage.getItem('id');
+
+
   return (
       <Router>
         <div>
@@ -18,23 +24,50 @@ const App = (props) => {
               <TopBar />
             </Grid>
             <div className="main-topbar-buffer" />
-            <Grid item sm={3}>
+            {value && (
+              <Grid item sm={3}>
+                <Paper className="main-grid-item">
+                  <UserList />
+                </Paper>
+              </Grid>
+            )}
+            {/* <Grid item sm={3}>
               <Paper className="main-grid-item">
                 <UserList />
               </Paper>
-            </Grid>
+            </Grid> */}
             <Grid item sm={9}>
               <Paper className="main-grid-item">
                 <Routes>
                   <Route
+                    path="/"
+                    element = {<TopBar/>}
+                  />
+                  <Route
                       path="/users/:userId"
-                      element = {<UserDetail />}
+                      element = {
+                        <ProtectedRoute>
+                          <UserDetail />
+                        </ProtectedRoute>
+                    }
                   />
                   <Route
                       path="/photos/:userId"
-                      element = {<UserPhotos />}
+                      element = {
+                        <ProtectedRoute>
+                          <UserPhotos />
+                        </ProtectedRoute>
+                    }
                   />
-                  <Route path="/users" element={<UserList />} />
+                  <Route
+                    path="/login"
+                    element = {<LoginRegister onLogin={setUser}/>}
+                  />
+                  <Route path="/users" element={
+                    <ProtectedRoute>
+                      <UserList />
+                    </ProtectedRoute>
+                    } />
                 </Routes>
               </Paper>
             </Grid>

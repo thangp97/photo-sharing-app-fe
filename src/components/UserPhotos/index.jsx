@@ -1,5 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Typography, ListItem, List, Divider, ListItemButton, ListItemText, Box, Paper } from "@mui/material";
+import { 
+  Typography, 
+  ListItem, 
+  List, 
+  Divider, 
+  ListItemButton, 
+  ListItemText, 
+  Paper,
+  Box
+} from "@mui/material";
+
+// import Box from '@mui/joy/Box';
+import Button from '@mui/joy/Button';
+import Textarea from '@mui/joy/Textarea';
 
 import "./styles.css";
 import {useParams, Link} from "react-router-dom";
@@ -16,6 +29,40 @@ function UserPhotos () {
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
     const [users, setUsers] = useState([]);
+    const [comment, setComment] = useState();
+
+    const handleSubmit = async (event,photo) => {
+      event.preventDefault();
+      const user = JSON.parse(localStorage.getItem('id'));
+      console.log(user);
+      const comments = {
+        comment: comment,
+        user_id: user._id,
+      }
+      console.log(comments);
+
+      try {
+        const resonpse = await fetch(`http://localhost:8081/api/photo/commentsOfPhoto/${photo}`,  {
+          method: "post",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(comments),
+        });
+
+        if(resonpse.ok) {
+          window.location.reload();
+        } else {
+          console.log(resonpse);
+          alert("Error Comment");
+        }
+      } catch (err) {
+        console.error(err);
+        setError("Can not fetch to New Comment");
+      }
+
+    }
 
     useEffect(() => {
       const fetchPhoto = async () => {
@@ -104,6 +151,18 @@ function UserPhotos () {
                   No comments.
                 </Typography>
               )}
+              <Divider sx={{ my: 1 }} />
+              <form
+                onSubmit={(e) => handleSubmit(e,photo._id)}
+              >
+                <Textarea
+                  placeholder="Comment"
+                  required
+                  sx={{ mb: 1 }}
+                  onChange={(e) => setComment(e.target.value)}
+                />
+                <Button type="submit">Submit</Button>
+              </form>
             </Paper>
           ))
         )}

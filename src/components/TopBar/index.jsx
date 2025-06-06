@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Button, colors, Toolbar, Typography } from "@mui/material";
 import models from '../../modelData/models.js' 
 
 import "./styles.css";
-import { useLocation, useParams, matchPath } from "react-router-dom";
+import { useLocation, useParams, matchPath, Link, useNavigate } from "react-router-dom";
 
 /**
  * Define TopBar, a React component of Project 4.
@@ -11,6 +11,13 @@ import { useLocation, useParams, matchPath } from "react-router-dom";
 function TopBar () {
     const location = useLocation();
     const [user, setUser] = useState(null);
+    const value = JSON.parse(localStorage.getItem('id')) || null;
+    const navigate = useNavigate();
+    const logOut = () => {
+      localStorage.removeItem('id');
+      navigate("/");
+      window.location.reload();
+    }
 
     useEffect(() => {
       // Tìm userId từ pathname
@@ -25,6 +32,7 @@ function TopBar () {
       } else {
         setUser(null);
       }
+
     }, [location]);
 
     let rightContent = "Welcome to PhotoShare";
@@ -44,7 +52,15 @@ function TopBar () {
             Phạm Mạnh Thắng
           </Typography>
           <Typography variant="h6" color="inherit">{rightContent}</Typography>
-          <Typography > </Typography>
+          {value && (
+            <>
+              <Typography>Hi {value.last_name}</Typography>
+              <Typography className="button" component={Link} onClick={logOut}>Log out</Typography>
+            </>
+          )}
+          {!value && (
+            <Typography className="button" component={Link} to={`/login`}>Please Login</Typography>
+          )}
         </Toolbar>
       </AppBar>
     );

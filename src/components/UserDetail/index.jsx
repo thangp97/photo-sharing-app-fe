@@ -48,7 +48,7 @@ function UserDetail() {
         </Typography>
         <Box mt={2}>
           <ListItemButton component={Link} to={`/photos/${user.userId}`} sx={{ backgroundColor: '#e3f2fd', borderRadius: 1 }}>
-            <ListItemText primary={`View ${userDetail.first_name}'s Photos`} />
+            <ListItemText primary={`View ${userDetail.last_name}'s Photos`} />
           </ListItemButton>
         </Box>
         </Paper>
