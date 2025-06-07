@@ -56,7 +56,7 @@ function TopBar () {
           {value && (
             <>
               <UpdatePhoto/>
-              <Typography>Hi {value.last_name}</Typography>
+              <Typography>Hi {value.first_name} {value.last_name}</Typography>
               <Typography className="button" component={Link} onClick={logOut}>Log out</Typography>
             </>
           )}

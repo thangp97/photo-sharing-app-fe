@@ -35,7 +35,7 @@ function UserDetail() {
     return (
         <Paper elevation={3} sx={{ padding: 3, margin: 2 }}>
         <Typography variant="h5" gutterBottom>
-          {userDetail.last_name}
+          {userDetail.first_name} {userDetail.last_name}
         </Typography>
         <Typography variant="body1" gutterBottom>
           Location: {userDetail.location}

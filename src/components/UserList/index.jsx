@@ -46,7 +46,7 @@ function UserList () {
                 to={`/users/${item._id}`}
                 sx={{ borderRadius: 1, '&:hover': { backgroundColor: '#f1f1f1' } }}
               >
-                <ListItemText primary={item.last_name} />
+                <ListItemText primary={item.first_name + " " + item.last_name } />
               </ListItemButton>
               <Divider />
             </Box>

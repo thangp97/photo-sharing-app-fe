@@ -24,6 +24,7 @@ const App = (props) => {
               <TopBar />
             </Grid>
             <div className="main-topbar-buffer" />
+            <div className='edit'>
             {value && (
               <Grid item sm={3}>
                 <Paper className="main-grid-item">
@@ -31,11 +32,6 @@ const App = (props) => {
                 </Paper>
               </Grid>
             )}
-            {/* <Grid item sm={3}>
-              <Paper className="main-grid-item">
-                <UserList />
-              </Paper>
-            </Grid> */}
             <Grid item sm={9}>
               <Paper className="main-grid-item">
                 <Routes>
@@ -71,6 +67,7 @@ const App = (props) => {
                 </Routes>
               </Paper>
             </Grid>
+            </div>
           </Grid>
         </div>
       </Router>
