@@ -5,6 +5,7 @@ import models from '../../modelData/models.js'
 import "./styles.css";
 import { useLocation, useParams, matchPath, Link, useNavigate } from "react-router-dom";
 import UpdatePhoto from "../UpdatePhoto/index"
+import ProtectedRoute from "../ProtectedRoute/index"
 
 /**
  * Define TopBar, a React component of Project 4.
@@ -55,9 +56,11 @@ function TopBar () {
           <Typography variant="h6" color="inherit">{rightContent}</Typography>
           {value && (
             <>
-              <UpdatePhoto/>
-              <Typography>Hi {value.first_name} {value.last_name}</Typography>
-              <Typography className="button" component={Link} onClick={logOut}>Log out</Typography>
+              <ProtectedRoute>
+                <UpdatePhoto/>
+                <Typography>Hi {value.first_name} {value.last_name}</Typography>
+                <Typography className="button" component={Link} onClick={logOut}>Log out</Typography>
+              </ProtectedRoute>
             </>
           )}
           {!value && (
