@@ -27,7 +27,7 @@ function UpdatePhoto() {
         formData.append("user_id", user._id);
         console.log(formData.get("user_id"));
         try {
-            const response = await fetch(`http://localhost:8081/api/photo/photos/new`, {
+            const response = await fetch(`https://36jyvf-8081.csb.app/api/photo/photos/new`, {
                 method: "post",
                 body: formData
             });

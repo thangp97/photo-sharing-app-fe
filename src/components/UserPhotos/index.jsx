@@ -42,7 +42,7 @@ function UserPhotos () {
       console.log(comments);
 
       try {
-        const resonpse = await fetch(`http://localhost:8081/api/photo/commentsOfPhoto/${photo}`,  {
+        const resonpse = await fetch(`https://36jyvf-8081.csb.app/api/photo/commentsOfPhoto/${photo}`,  {
           method: "post",
           headers: {
             Accept: "application/json",
@@ -111,7 +111,7 @@ function UserPhotos () {
             <Paper key={photo._id} elevation={3} sx={{ p: 2, mb: 4 }}>
               <Box textAlign="center">
                 <img
-                  src={`http://localhost:8081/images/${photo.file_name}`}
+                  src={`https://36jyvf-8081.csb.app/images/${photo.file_name}`}
                   alt="Photo"
                   style={{ width: "100%", maxWidth: 600, borderRadius: 5 }}
                 />
@@ -130,7 +130,7 @@ function UserPhotos () {
                         <ListItemButton component={Link} to={`/users/${comment.user_id}`}>
                           <ListItemText
                             primary={
-                              users.find(u => u._id === comment.user_id)?.last_name || "Unknown"
+                              users.find(u => u._id === comment.user_id)?.first_name + " " + users.find(u => u._id === comment.user_id)?.last_name || "Unknown"
                             }
                           />
                         </ListItemButton>

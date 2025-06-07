@@ -5,7 +5,7 @@
  *
  */
 
-const bUrl = "http://localhost:8081";
+const bUrl = "https://36jyvf-8081.csb.app";
 
 async function fetchModel(url) {
   const models = await fetch(`${bUrl}${url}`, {

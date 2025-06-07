@@ -23,7 +23,7 @@ function LoginRegister ({ onLogin }) {
         }
 
         try {
-            const response = await fetch("http://localhost:8081/api/user", {
+            const response = await fetch("https://36jyvf-8081.csb.app/api/user", {
                 method: "post",
                 headers: {
                     Accept: "application/json",
@@ -62,7 +62,7 @@ function LoginRegister ({ onLogin }) {
             return;
         }
         try {
-           const response = await fetch("http://localhost:8081/api/user/admin/login", {
+           const response = await fetch("https://36jyvf-8081.csb.app/api/user/admin/login", {
             method: "post",
             headers: {
                 Accept: "application/json",
